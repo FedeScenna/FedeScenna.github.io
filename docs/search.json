@@ -1,0 +1,19 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About me",
+      "author": [],
+      "contents": "\nHi, thanks for visiting! I am Federico and I live in Buenos Aires, Argentina. I graduated in economics and have been working in data science positions slightly before the term was widely spread (or at least as spread as it is now).\nIn this site I will share some of my thoughts and side projects. If you wish you to contact me, you can find me at:\nTwitter: [@FedeScenna](https://twitter.com/FedeScenna)\nGithub: FedeScenna\n\n\n\n",
+      "last_modified": "2021-04-25T12:01:28-03:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Federico Scenna",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-04-25T12:01:29-03:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}

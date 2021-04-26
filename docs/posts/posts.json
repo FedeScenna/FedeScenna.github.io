@@ -1,22 +1,5 @@
 [
   {
-    "path": "posts/2021-04-25-reading-from-statistical-rethinking-part-1/",
-    "title": "Reading from Statistical Rethinking - part 1",
-    "description": "A short description of the post.",
-    "author": [
-      {
-        "name": "Federico Scenna",
-        "url": "https://FedeScenna.github.io/"
-      }
-    ],
-    "date": "2021-04-25",
-    "categories": [],
-    "contents": "\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
-    "preview": {},
-    "last_modified": "2021-04-25T11:34:23-03:00",
-    "input_file": {}
-  },
-  {
     "path": "posts/2021-04-25-a-case-against-wordclouds/",
     "title": "A case against wordclouds",
     "description": "Or why I think bar charts are better",

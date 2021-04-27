@@ -54,35 +54,30 @@ div.sourceCode
 @media screen {
 code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ad0000; } /* Alert */
-code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
-code span.bn { color: #ad0000; } /* BaseN */
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
-code span.ch { color: #20794d; } /* Char */
-code span.cn { color: #8f5902; } /* Constant */
-code span.co { color: #5e5e5e; } /* Comment */
-code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-code span.dt { color: #ad0000; } /* DataType */
-code span.dv { color: #ad0000; } /* DecVal */
-code span.er { color: #ad0000; } /* Error */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #ad0000; } /* Float */
-code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
-code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
-code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
-code span.ss { color: #20794d; } /* SpecialString */
-code span.st { color: #20794d; } /* String */
-code span.va { color: #111111; } /* Variable */
-code span.vs { color: #20794d; } /* VerbatimString */
-code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
@@ -109,7 +104,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["Piping in data.table"]},{"type":"NULL"},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Federico Scenna"]}]}]},{"type":"character","attributes":{},"value":["04-26-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"logical","attributes":{},"value":[false]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["Piping in data.table"]},{"type":"NULL"},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Federico Scenna"]}]}]},{"type":"character","attributes":{},"value":["04-26-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight","highlight_downlit"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["haddock"]},{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"logical","attributes":{},"value":[false]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1838,6 +1833,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>I recently learned to love data.table’s performance and many of its features. However, I sometimes miss the syntax of tidyverse. However, I’ve found in <a href="https://eliocamp.github.io/codigo-r/en/2019/07/why-i-love-data-table/">Elio Campitelli’s blog post</a> that it is possible to combine the best of both worlds.</p>
 <p>Let’s see the method for chaining operations in data.table:</p>
 <div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(data.table)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>df &lt;-<span class="st"> </span>iris</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">setDT</span>(df)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>iris[Petal.Length<span class="op">&gt;</span><span class="dv">1</span>][, <span class="kw">mean</span>(Petal.Width), by =<span class="st"> </span>.(Species)]</span></code></pre></div>
 <pre><code>      Species        V1
 1:     setosa 0.2469388
 2: versicolor 1.3260000
@@ -1845,12 +1844,16 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <p>First, Petal Length observations greater than 1 are filtered and later the data is aggregated and summarised by Species and Petal Width mean is calculated. This is all fine but I personally find piping as it gives a clearer perspective of which operations are running.</p>
 <div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">library</span>(magrittr)</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>iris <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="st">  </span>.[Petal.Length <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>] <span class="op">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="st">  </span>.[, <span class="kw">mean</span>(Petal.Width), by =<span class="st"> </span>.(Species)]</span></code></pre></div>
 <pre><code>      Species        V1
 1:     setosa 0.2469388
 2: versicolor 1.3260000
 3:  virginica 2.0260000</code></pre>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

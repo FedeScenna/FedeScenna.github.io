@@ -11,9 +11,9 @@
     ],
     "date": "2021-04-26",
     "categories": [],
-    "contents": "\nI recently learned to love data.table’s performance and many of its features. However, I sometimes miss the syntax of tidyverse. However, I’ve found in Elio Campitelli’s blog post that it is possible to combine the best of both worlds.\nLet’s see the method for chaining operations in data.table:\n\n      Species        V1\n1:     setosa 0.2469388\n2: versicolor 1.3260000\n3:  virginica 2.0260000\n\nFirst, Petal Length observations greater than 1 are filtered and later the data is aggregated and summarised by Species and Petal Width mean is calculated. This is all fine but I personally find piping as it gives a clearer perspective of which operations are running.\n\n      Species        V1\n1:     setosa 0.2469388\n2: versicolor 1.3260000\n3:  virginica 2.0260000\n\n\n\n\n",
+    "contents": "\nI recently learned to love data.table’s performance and many of its features. However, I sometimes miss the syntax of tidyverse. However, I’ve found in Elio Campitelli’s blog post that it is possible to combine the best of both worlds.\nLet’s see the method for chaining operations in data.table:\n\nlibrary(data.table)\ndf <- iris\nsetDT(df)\niris[Petal.Length>1][, mean(Petal.Width), by = .(Species)]\n      Species        V1\n1:     setosa 0.2469388\n2: versicolor 1.3260000\n3:  virginica 2.0260000\n\nFirst, Petal Length observations greater than 1 are filtered and later the data is aggregated and summarised by Species and Petal Width mean is calculated. This is all fine but I personally find piping as it gives a clearer perspective of which operations are running.\n\nlibrary(magrittr)\n\niris %>% \n  .[Petal.Length > 1] %>%\n  .[, mean(Petal.Width), by = .(Species)]\n      Species        V1\n1:     setosa 0.2469388\n2: versicolor 1.3260000\n3:  virginica 2.0260000\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-04-26T23:48:56-03:00",
+    "last_modified": "2021-04-27T00:42:41-03:00",
     "input_file": {}
   },
   {
